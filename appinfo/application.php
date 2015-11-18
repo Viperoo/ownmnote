@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - ownnote
+ * ownCloud - ownmnote
  *
  * This file is licensed under the Affero General Public License version 3 or
  * later. See the COPYING file.
@@ -9,22 +9,22 @@
  * @copyright Ben Curtis 2015
  */
 
-namespace OCA\OwnNote\AppInfo;
+namespace OCA\OwnMNote\AppInfo;
 
 
 use \OCP\AppFramework\App;
 use \OCP\IContainer;
 
-use \OCA\OwnNote\Controller\PageController;
-use \OCA\OwnNote\Controller\OwnnoteApiController;
-use \OCA\OwnNote\Controller\OwnnoteAjaxController;
+use \OCA\OwnMNote\Controller\PageController;
+use \OCA\OwnMNote\Controller\OwnmnoteApiController;
+use \OCA\OwnMNote\Controller\OwnmnoteAjaxController;
 
 
 class Application extends App {
 
 
 	public function __construct (array $urlParams=array()) {
-		parent::__construct('ownnote', $urlParams);
+		parent::__construct('ownmnote', $urlParams);
 
 		$container = $this->getContainer();
 
@@ -39,15 +39,15 @@ class Application extends App {
 			);
 		});
 
-                $container->registerService('OwnnoteApiController', function($c){
-                        return new OwnnoteApiController(
+                $container->registerService('OwnmnoteApiController', function($c){
+                        return new OwnmnoteApiController(
                                 $c->query('AppName'),
                                 $c->query('Request')
                         );
                 });
 
-                $container->registerService('OwnnoteAjaxController', function($c){
-                        return new OwnnoteAjaxController(
+                $container->registerService('OwnmnoteAjaxController', function($c){
+                        return new OwnmnoteAjaxController(
                                 $c->query('AppName'),
                                 $c->query('Request')
                         );

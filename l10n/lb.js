@@ -1,5 +1,5 @@
 OC.L10N.register(
-"ownnote",
+"ownmnote",
 {
 "# day ago" : "# day ago",
 "# days ago" : "# days ago",

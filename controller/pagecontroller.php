@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - ownnote
+ * ownCloud - ownmnote
  *
  * This file is licensed under the Affero General Public License version 3 or
  * later. See the COPYING file.
@@ -9,7 +9,7 @@
  * @copyright Ben Curtis 2015
  */
 
-namespace OCA\OwnNote\Controller;
+namespace OCA\OwnMNote\Controller;
 
 
 use \OCP\IRequest;
@@ -40,7 +40,7 @@ class PageController extends Controller {
      */
     public function index() {
 	$params = array('user' => $this->userId);
-	$response = new TemplateResponse('ownnote', 'main', $params);
+	$response = new TemplateResponse('ownmnote', 'main', $params);
 	$ocVersion = \OCP\Util::getVersion();
 	if ($ocVersion[0] > 8 || ($ocVersion[0] == 8 && $ocVersion[1] >= 1)) {
 		$csp = new \OCP\AppFramework\Http\ContentSecurityPolicy();

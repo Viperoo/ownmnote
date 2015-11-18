@@ -2,7 +2,7 @@
 The official release information and downloads can be found at: https://apps.owncloud.com/content/show.php/ownNote+-+Notes+Application?content=168512
 
 ## Installation
-- Place this app in **owncloud/apps/ownnote** (Rename the extracted ZIP to "ownnote" or you will receive errors)
+- Place this app in **owncloud/apps/ownmnote** (Rename the extracted ZIP to "ownmnote" or you will receive errors)
 - Note: *custom_csp_policy* changes are no longer required
 
 ## Mobile Apps

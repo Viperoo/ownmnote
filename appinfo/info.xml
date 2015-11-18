@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info>
-    <id>ownnote</id>
-    <name>OwnNote</name>
+    <id>ownmnote</id>
+    <name>OwnMNote</name>
     <description></description>
     <licence>AGPL</licence>
     <author>Ben Curtis</author>

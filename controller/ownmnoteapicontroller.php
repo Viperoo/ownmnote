@@ -1,6 +1,6 @@
 <?php
 /**
- * ownCloud - ownnote
+ * ownCloud - ownmnote
  *
  * This file is licensed under the Affero General Public License version 3 or
  * later. See the COPYING file.
@@ -9,20 +9,20 @@
  * @copyright Ben Curtis 2015
  */
 
-namespace OCA\OwnNote\Controller;
+namespace OCA\OwnMNote\Controller;
 
 use \OCP\AppFramework\ApiController;
 use \OCP\AppFramework\Http\JSONResponse;
 use \OCP\AppFramework\Http\Response;
 use \OCP\AppFramework\Http;
 use \OCP\IRequest;
-use \OCA\OwnNote\Lib\Backend;
+use \OCA\OwnMNote\Lib\Backend;
 
-\OCP\App::checkAppEnabled('ownnote');
+\OCP\App::checkAppEnabled('ownmnote');
 
 
 
-class OwnnoteAjaxController extends ApiController {
+class OwnmnoteApiController extends ApiController {
 
 	private $backend;
 
@@ -33,96 +33,121 @@ class OwnnoteAjaxController extends ApiController {
 	}
 
 	/**
-	* AJAX FUNCTIONS
+	* MOBILE FUNCTIONS
 	*/
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxindex() {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function index() {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		return $this->backend->getListing($FOLDER, false);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxannouncement() {
-		return $this->backend->getAnnouncement();
+	public function mobileindex() {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
+		return $this->backend->getListing($FOLDER, true);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxcreate($name, $group) {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function remoteindex() {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
+		return json_encode($this->backend->getListing($FOLDER, true));
+	}
+
+	/**
+	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
+	*/
+	public function create($name, $group) {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		if (isset($name) && isset($group))
 			return $this->backend->createNote($FOLDER, $name, $group);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxdel($name, $group) {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function del($name, $group) {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		if (isset($name) && isset($group))
 			return $this->backend->deleteNote($FOLDER, $name, $group);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxedit($name, $group) {
+	public function edit($name, $group) {
 		if (isset($name) && isset($group))
 			return $this->backend->editNote($name, $group);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxsave($name, $group, $content) {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function save($name, $group, $content) {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		if (isset($name) && isset($group) && isset($content))
 			return $this->backend->saveNote($FOLDER, $name, $group, $content, 0);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxren($name, $group, $newname, $newgroup) {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function ren($name, $group, $newname, $newgroup) {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		if (isset($name) && isset($newname) && isset($group) && isset($newgroup))
 			return $this->backend->renameNote($FOLDER, $name, $group, $newname, $newgroup);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxdelgroup($group) {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function delgroup($group) {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		if (isset($group))
 			return $this->backend->deleteGroup($FOLDER, $group);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxrengroup($group, $newgroup) {
-		$FOLDER = \OCP\Config::getAppValue('ownnote', 'folder', 'Notes');
+	public function rengroup($group, $newgroup) {
+		$FOLDER = \OCP\Config::getAppValue('ownmnote', 'folder', 'Notes');
 		if (isset($group) && isset($newgroup))
 			return $this->backend->renameGroup($FOLDER, $group, $newgroup);
 	}
 
 	/**
 	* @NoAdminRequired
+	* @CORS
+	* @NoCSRFRequired
 	*/
-	public function ajaxversion() {
+	public function version() {
 		return $this->backend->getVersion();
-	}
-
-	/**
-	*/
-	public function ajaxsetval($field, $value) {
-		return $this->backend->setAdminVal($field, $value);
 	}
 }

@@ -2,9 +2,9 @@
 
 OCP\User::checkAdminUser();
 
-$tmpl = new OCP\Template('ownnote', 'admin');
-$tmpl->assign('folder', OCP\Config::getAppValue('ownnote', 'folder', 'Notes'));
-$tmpl->assign('disableAnnouncement', OCP\Config::getAppValue('ownnote', 'disableAnnouncement', ''));
+$tmpl = new OCP\Template('ownmnote', 'admin');
+$tmpl->assign('folder', OCP\Config::getAppValue('ownmnote', 'folder', 'Notes'));
+$tmpl->assign('disableAnnouncement', OCP\Config::getAppValue('ownmnote', 'disableAnnouncement', ''));
 
 return $tmpl -> fetchPage();
 

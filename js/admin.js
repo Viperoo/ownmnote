@@ -1,32 +1,32 @@
-function ocOwnnoteUrl(url) {
-	var newurl = OC.linkTo("ownnote",url).replace("apps/ownnote","index.php/apps/ownnote");
+function ocOwnmnoteUrl(url) {
+	var newurl = OC.linkTo("ownmnote",url).replace("apps/ownmnote","index.php/apps/ownmnote");
 	return newurl;
 }
 
 $(document).ready(function() {
-	$('#ownnote-folder').change(function() {
+	$('#ownmnote-folder').change(function() {
 		var val = $(this).val();
-	        $.post(ocOwnnoteUrl("api/v0.2/ajaxsetval"), { field: 'folder', value: val }, function (data) {
+	        $.post(ocOwnmnoteUrl("api/v0.2/ajaxsetval"), { field: 'folder', value: val }, function (data) {
 			 console.log('response', data);
         	});
 	});
-	$('#ownnote-type').change(function() {
+	$('#ownmnote-type').change(function() {
 		var val = $(this).val();
 		if (val == "") {
-			$('#ownnote-folder').val('');
+			$('#ownmnote-folder').val('');
 			$('#shorten-folder-settings').css('display', 'none');
-			$.post(ocOwnnoteUrl("api/v0.2/ajaxsetval"), { field: 'folder', value: '' }, function (data) {
+			$.post(ocOwnmnoteUrl("api/v0.2/ajaxsetval"), { field: 'folder', value: '' }, function (data) {
 				console.log('response', data);
 			});
 		} else
 			$('#shorten-folder-settings').css('display', 'block');
 	});
-	$('#ownnote-disableannouncement').change(function() {
+	$('#ownmnote-disableannouncement').change(function() {
 		var da = "";
 		var c = $(this).is(':checked');
 		if (c)
 			da = "checked";
-	        $.post(ocOwnnoteUrl("api/v0.2/ajaxsetval"), { field: 'disableAnnouncement', val: da }, function (data) {
+	        $.post(ocOwnmnoteUrl("api/v0.2/ajaxsetval"), { field: 'disableAnnouncement', val: da }, function (data) {
 			 console.log('response', data);
         	});
 	});

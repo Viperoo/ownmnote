@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <database>
-	<name>ownnote</name>
+	<name>ownmnote</name>
 	<create>true</create>
 	<overwrite>false</overwrite>
 	<charset>utf8</charset>
 	<table>
-		<name>*dbprefix*ownnote</name>
+		<name>*dbprefix*ownmnote</name>
 		<declaration>
 			<field>
 				<name>id</name>
@@ -60,7 +60,7 @@
 		</declaration>
 	</table>
 	<table>
-		<name>*dbprefix*ownnote_parts</name>
+		<name>*dbprefix*ownmnote_parts</name>
 		<declaration>
 			<field>
 				<name>pid</name>

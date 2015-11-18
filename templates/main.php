@@ -1,10 +1,10 @@
 <?php
-\OCP\Util::addScript('ownnote', 'script');
-\OCP\Util::addScript('ownnote','tinymce/tinymce.min');
-\OCP\Util::addStyle('ownnote', 'style');
+\OCP\Util::addScript('ownmnote', 'script');
+\OCP\Util::addScript('ownmnote','tinymce/tinymce.min');
+\OCP\Util::addStyle('ownmnote', 'style');
 
-$disableAnnouncement = \OCP\Config::getAppValue('ownnote', 'disableAnnouncement', '');
-$l = OCP\Util::getL10N('ownnote');
+$disableAnnouncement = \OCP\Config::getAppValue('ownmnote', 'disableAnnouncement', '');
+$l = OCP\Util::getL10N('ownmnote');
 
 $ocVersionArray = OCP\Util::getVersion();
 $ocVersion = "";
@@ -24,10 +24,10 @@ foreach ($ocVersionArray as $v) {
 		</ul>
 	</div>
 	<div id="app-content">
-		<div id="ownnote"></div>
+		<div id="ownmnote"></div>
 	</div>
 	<input type=hidden name="disableAnnouncement" id="disableAnnouncement" value="<?php echo $disableAnnouncement; ?>">
-	<div id="ownnote-l10n">
+	<div id="ownmnote-l10n">
 		l10n["# day ago"] = "<?php p($l->t("# day ago")); ?>";
 		l10n["# days ago"] = "<?php p($l->t("# days ago")); ?>";
 		l10n["# hour ago"] = "<?php p($l->t("# hour ago")); ?>";
