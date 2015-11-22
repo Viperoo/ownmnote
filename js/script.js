@@ -98,23 +98,9 @@ function buildEdit(n, g, data) {
 var idle = false;
 var idleTime = 0;
 var idleInterval;
-var origNote;
 var checkDuration = 20;
 var saveTime = 60;
-function startTimer() {
-    origNote = tinymce.activeEditor.getContent();
-    idleIterval = setInterval(timerIncrement, checkDuration * 1000);
-    $(document).mousemove(function (e) {
-        notIdle();
-    });
-    $(document).keypress(function (e) {
-        notIdle();
-    });
-    $('#editable_ifr').contents().find("body").mousemove(function (e) {
-        notIdle();
-    });
 
-}
 
 function notIdle() {
     idle = false;
