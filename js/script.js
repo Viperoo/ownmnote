@@ -74,7 +74,7 @@ function buildEdit(n, g, data) {
     html += "	</div>";
     html += "</div>";
     html += "<div class='listingBlank'><!-- --></div>";
-    html += "<div id='heheszki' class='editable loaded'>";
+    html += "<div id='editorContainer' class='editable loaded'>";
     html += data;
     html += "</div>";
     document.getElementById("ownmnote").innerHTML = html;
@@ -86,8 +86,8 @@ function buildEdit(n, g, data) {
     };
     OCA.Files_Texteditor.file = file;
 
-    OCA.Files_Texteditor.loadEditor($('#heheszki'), file);
-    OCA.Files_Texteditor.$container = $('#heheszki');
+    OCA.Files_Texteditor.loadEditor($('#editorContainer'), file);
+    OCA.Files_Texteditor.$container = $('#editorContainer');
     $('#editor_overlay').remove();
 
     buildGroupSelectOptions(g);
@@ -248,9 +248,9 @@ var sort_by = function (field, reverse, primer) {
 
 function buildListing() {
 
-    if ($('#heheszki').hasClass('loaded')) {
+    if ($('#editorContainer').hasClass('loaded')) {
         OCA.Files_Texteditor.closeEditor();
-        $('#heheszki').remove();
+        $('#editorContainer').remove();
     }
 
     var html = "";
