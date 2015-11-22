@@ -673,12 +673,14 @@ var disableAnnouncement = "";
 function getSettings() {
     disableAnnouncement = $('#disableAnnouncement').val();
 }
-
+$('link[rel="shortcut icon"]').attr('href', OC.filePath('ownmnote', 'img', 'favicon.png'));
 $(document).ready(function () {
     $.ajaxSetup({cache: false});
     translate();
     getSettings();
     loadListing();
+
+
 });
 	
 
