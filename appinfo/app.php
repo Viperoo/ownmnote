@@ -11,6 +11,8 @@
 
 namespace OCA\OwnMNote\AppInfo;
 
+$l = \OC::$server->getL10N('ownmnote');
+
 if (\OCP\App::isEnabled('files_markdown')) {
     \OCP\App::registerAdmin('ownmnote', 'admin');
 
@@ -32,7 +34,7 @@ if (\OCP\App::isEnabled('files_markdown')) {
         // the title of your application. This will be used in the
         // navigation or on the settings page of your app
         //'name' => \OC_L10N::get('ownmnote')->t('Own Note')
-        'name' => \OC_L10N::get('ownmnote')->t('Notes')
+        'name' => $l->t('Notes')
     ));
 } else {
     $msg = 'Can not enable the OwnMarkdownNote app because the ownCloud Markdown App is disabled.';
